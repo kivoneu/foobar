@@ -13,9 +13,10 @@ resource "aws_s3_bucket" "public_foobar_bucket" {
 }
 
 resource "aws_s3_bucket_object" "index_document_object" {
-  bucket = "${aws_s3_bucket.public_foobar_bucket.bucket}"
+  bucket = "${aws_s3_bucket.public_foobar_bucket.id}"
   key    = "${var.index_document}"
   source = "./${var.index_document}"
+  content_type = "html/text"
 }
 
 resource "aws_s3_bucket_policy" "public_foobar_bucket_policy" {
